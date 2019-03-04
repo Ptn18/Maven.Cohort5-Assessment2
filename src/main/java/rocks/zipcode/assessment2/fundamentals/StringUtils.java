@@ -10,7 +10,8 @@ public class StringUtils {
      * @return `stringToBePadded` flushed right by left-padding
      */
     public static String padLeft(String stringToBePadded, int amountOfPadding) {
-        return null;
+
+        return String.format("%1$" + amountOfPadding + "s", stringToBePadded);
     }
 
     /**
@@ -19,7 +20,8 @@ public class StringUtils {
      * @return `stringToBePadded` flushed right by right-padding
      */
     public static String padRight(String stringToBePadded, int amountOfPadding) {
-        return null;
+
+        return String.format("%1$-" + amountOfPadding + "s", stringToBePadded);
     }
 
     /**
@@ -28,7 +30,13 @@ public class StringUtils {
      * @return the string repeated and concatenated `n` times
      */
     public static String repeatString(String stringToBeRepeated, int numberOfTimeToRepeat) {
-        return null;
+        StringBuffer buffer = new StringBuffer(stringToBeRepeated);
+        for (int i = 0; i < numberOfTimeToRepeat-1; i++) {
+            buffer.append(stringToBeRepeated);
+        }
+        String str2 = buffer.toString();
+
+        return str2;
     }
 
     /**
@@ -36,7 +44,14 @@ public class StringUtils {
      * @return - true if string only contains alpha characters
      */
     public static Boolean isAlphaString(String string) {
-        return null;
+        for (int i = 0; i != string.length(); ++i) {
+            if (!Character.isLetter(string.charAt(i))) {
+                return false;
+            }
+        }
+
+        return true;
+
     }
 
     /**
@@ -44,7 +59,13 @@ public class StringUtils {
      * @return - true if string only contains numeric characters
      */
     public static Boolean isNumericString(String string) {
-        return null;
+        for(int i = 0; i < string.length(); i++){
+            if(Character.isDigit(string.charAt(i))){
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -52,6 +73,7 @@ public class StringUtils {
      * @return - true if string only contains special characters
      */
     public static Boolean isSpecialCharacterString(String string) {
-        return null;
+
+        return (string == null) ? false : string.matches("[^A-Za-z0-9 ]");
     }
 }
